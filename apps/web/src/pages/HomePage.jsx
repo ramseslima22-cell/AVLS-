@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { MotionConfig } from 'framer-motion';
+import { ScrollTrigger } from '@/hooks/use-cinematic';
+import StudioIntro from '@/components/StudioIntro';
+import SocialShowcase from '@/components/SocialShowcase';
+import '@/cinematic.css';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Videos from '@/components/Videos';
@@ -14,8 +18,13 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 import Seo from '@/components/Seo';
 
 export default function HomePage() {
+	useEffect(() => {
+		let mounted = true;
+		document.fonts.ready.then(() => { if (mounted) ScrollTrigger.refresh(); });
+		return () => { mounted = false; };
+	}, []);
 	return (
-		<>
+		<MotionConfig reducedMotion="user">
 			<Helmet>
 				<title>AVLS — Agência de Marketing Digital | Estratégia que gera resultados</title>
 				<meta
@@ -30,7 +39,8 @@ export default function HomePage() {
 			/>
 			<Header />
 			<main>
-				<Hero />
+				<StudioIntro />
+				<SocialShowcase />
 				<Services />
 				<Portfolio />
 				<Videos />
@@ -41,6 +51,6 @@ export default function HomePage() {
 			</main>
 			<Footer />
 			<WhatsAppFloat />
-		</>
+		</MotionConfig>
 	);
 }

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import CaseDepth from '@/components/CaseDepth';
 import Reveal from '@/components/Reveal';
 import SectionHeader from '@/components/SectionHeader';
 import MediaLightbox from '@/components/MediaLightbox';
@@ -20,7 +21,7 @@ export default function Portfolio() {
 	);
 
 	return (
-		<section id="trabalhos" className="py-20 sm:py-28">
+		<section id="trabalhos" className="cinematic-portfolio py-20 sm:py-28">
 			<div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
 				<div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 					<SectionHeader
@@ -52,7 +53,7 @@ export default function Portfolio() {
 					</Reveal>
 				</div>
 
-				<motion.div layout className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+				<motion.div layout className="case-grid mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					<AnimatePresence mode="popLayout">
 						{filtered.map((project, index) => (
 							<motion.article
@@ -63,7 +64,7 @@ export default function Portfolio() {
 								exit={{ opacity: 0, scale: 0.96 }}
 								transition={{ duration: 0.35, delay: index * 0.04, ease: 'easeOut' }}
 							>
-								<button
+								<CaseDepth><button
 									type="button"
 									onClick={() => setSelected(project)}
 									className="group relative block w-full overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[0_18px_40px_-28px_rgba(20,20,30,0.4)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_64px_-28px_rgba(20,20,30,0.5)]"
@@ -74,7 +75,7 @@ export default function Portfolio() {
 											src={project.cover}
 											alt={project.title}
 											loading="lazy"
-											className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+											className="h-full w-full object-cover"
 										/>
 										<div
 											className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -101,7 +102,7 @@ export default function Portfolio() {
 											aria-hidden="true"
 										/>
 									</div>
-								</button>
+								</button></CaseDepth>
 							</motion.article>
 						))}
 					</AnimatePresence>
