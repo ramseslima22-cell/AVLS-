@@ -16,12 +16,10 @@ const VALUE_PROPS = [
 	{ icon: Zap, label: 'Crescimento contínuo' },
 ];
 
-const SIDE_WORDS = ['Ideias', 'Estratégia', 'Tráfego', 'Conversão', 'Resultados'];
-
 // Tela do notebook: mini-site AVLS em CSS puro.
 function LaptopScreen() {
 	return (
-		<div className="hero-display-surface relative flex h-full flex-col overflow-hidden bg-[#0a0a10] p-5 text-white">
+		<div className="hero-display-surface relative flex h-full flex-col overflow-hidden bg-[var(--avls-screen)] p-5 text-white">
 			<div
 				className="hero-display-art absolute -right-10 top-6 h-44 w-44 opacity-90"
 				style={{
@@ -63,7 +61,7 @@ function LaptopScreen() {
 
 function PhoneScreen() {
 	return (
-		<div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-[#0a0a10] p-3 text-center text-white">
+		<div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-[var(--avls-screen)] p-3 text-center text-white">
 			<div
 				className="absolute inset-x-0 bottom-0 h-1/2 opacity-70 blur-xl"
 				style={{ background: 'linear-gradient(180deg,transparent,#8b3fe4)' }}
@@ -239,14 +237,6 @@ export default function Hero() {
 						</motion.div>
 						</div>
 
-						<ul className="hero-side-words absolute -left-2 top-2 hidden flex-col gap-2 border-l border-foreground/15 pl-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground xl:flex">
-							{SIDE_WORDS.map((word) => (
-								<li key={word}>{word}</li>
-							))}
-							<li className="pt-1">
-								<span className="block h-0.5 w-8 bg-brand-gradient" aria-hidden="true" />
-							</li>
-						</ul>
 					</motion.div>
 				</div>
 			</div>

@@ -113,3 +113,146 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* One source for the display and the scroll-driven AVLS environment. */
+:root {
+  --avls-screen: hsl(var(--avls-dark-background)); /* #0a0a10 */
+  --avls-ink: #141419;
+  --avls-paper: #f5f3ef;
+  --avls-action-blue: #214ab3;
+  --avls-action-purple: #642da4;
+  --avls-action-magenta: #a32c6e;
+  --avls-highlight-blue: #7da5ff;
+  --avls-highlight-purple: #ba91ff;
+  --avls-highlight-magenta: #ff85c7;
+  --avls-shadow: 0 24px 56px -24px #000000b3;
+  --avls-dark-background: 240 23.076923% 5.098039%;
+  --avls-dark-foreground: 40 23% 95%;
+  --avls-dark-card: 240 16% 10%;
+  --avls-dark-card-foreground: 40 23% 95%;
+  --avls-dark-popover: 240 16% 10%;
+  --avls-dark-popover-foreground: 40 23% 95%;
+  --avls-dark-primary: 40 23% 95%;
+  --avls-dark-primary-foreground: 240 23.076923% 5.098039%;
+  --avls-dark-secondary: 240 14% 14%;
+  --avls-dark-secondary-foreground: 40 23% 95%;
+  --avls-dark-muted: 240 14% 14%;
+  --avls-dark-muted-foreground: 240 8% 72%;
+  --avls-dark-accent: 260 25% 20%;
+  --avls-dark-accent-foreground: 40 23% 95%;
+  --avls-dark-border: 240 12% 30%;
+  --avls-dark-input: 240 12% 42%;
+  --avls-dark-ring: 263 85% 76%;
+}
+.avls-scroll-theme main > :not(.cinematic-intro),
+.avls-scroll-theme .creative-studio,
+.avls-scroll-theme footer {
+  --background: var(--avls-dark-background);
+  --foreground: var(--avls-dark-foreground);
+  --card: var(--avls-dark-card);
+  --card-foreground: var(--avls-dark-card-foreground);
+  --popover: var(--avls-dark-popover);
+  --popover-foreground: var(--avls-dark-popover-foreground);
+  --primary: var(--avls-dark-primary);
+  --primary-foreground: var(--avls-dark-primary-foreground);
+  --secondary: var(--avls-dark-secondary);
+  --secondary-foreground: var(--avls-dark-secondary-foreground);
+  --muted: var(--avls-dark-muted);
+  --muted-foreground: var(--avls-dark-muted-foreground);
+  --accent: var(--avls-dark-accent);
+  --accent-foreground: var(--avls-dark-accent-foreground);
+  --border: var(--avls-dark-border);
+  --input: var(--avls-dark-input);
+  --ring: var(--avls-dark-ring);
+  color: hsl(var(--foreground));
+  background-color: var(--avls-screen);
+}
+.avls-scroll-theme { background-color: hsl(var(--background)); }
+.avls-scroll-theme .hero-cinematic { background-color: hsl(var(--background)); }
+.avls-scroll-theme :is(header, [role="dialog"]) { transition-property: transform, opacity, box-shadow; }
+.avls-scroll-theme :is(header, footer) img.mix-blend-multiply {
+  mix-blend-mode: normal;
+  background: var(--avls-paper);
+  border-radius: 4px;
+}
+.avls-scroll-theme :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 4px;
+}
+.avls-scroll-theme :is(main > :not(.cinematic-intro), .creative-studio, footer) .text-gradient {
+  background-image: linear-gradient(92deg, var(--avls-highlight-blue), var(--avls-highlight-purple) 48%, var(--avls-highlight-magenta));
+}
+.avls-scroll-theme .studio-art {
+  background-image: linear-gradient(hsl(var(--border) / .3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / .3) 1px, transparent 1px);
+}
+.avls-scroll-theme :is(.studio-frame, .studio-metrics, .social-card) {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+  box-shadow: var(--avls-shadow);
+}
+.avls-scroll-theme :is(.equipment-caption, .service-number) { color: hsl(var(--muted-foreground)); }
+.avls-scroll-theme :is(.service-icon, .social-title-star, .studio-corner) { color: var(--avls-highlight-purple); }
+.avls-scroll-theme .social-word-media { color: var(--avls-screen); -webkit-text-stroke-color: hsl(var(--foreground)); }
+.avls-scroll-theme .social-viewport { scrollbar-color: var(--avls-highlight-purple) hsl(var(--secondary)); }
+.avls-scroll-theme .social-progress { background: hsl(var(--border)); }
+.avls-scroll-theme .social-card--type .social-card-art { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
+.avls-scroll-theme .social-card--reel .social-card-art { background: linear-gradient(135deg, var(--avls-action-blue), var(--avls-action-purple) 50%, var(--avls-action-magenta)); }
+.avls-scroll-theme .studio-equipment--rig .equipment-placeholder { background: hsl(var(--secondary) / .8); border-color: hsl(var(--border)); }
+.avls-scroll-theme :is(.studio-frame, .studio-metrics, .case-depth) { box-shadow: var(--avls-shadow); }
+.avls-scroll-theme #videos { background-color: var(--avls-screen); }
+.avls-scroll-theme section[aria-label="Chamada para contato"] > div > div > div { background-color: hsl(var(--card)); box-shadow: inset 0 0 0 1px hsl(var(--border)); }
+.avls-scroll-theme :is(.bg-card, .bg-card\/70) { box-shadow: var(--avls-shadow); }
+.avls-scroll-theme :is(a, button).bg-foreground:hover { box-shadow: 0 12px 32px -16px #ba91ff99; }
+.avls-scroll-theme [class~="bg-[#25d366]"] { color: var(--avls-ink); }
+
+/* Native controls, placeholders and small labels retain contrast on dark surfaces. */
+.avls-scroll-theme :is(.creative-studio, main > :not(.cinematic-intro), footer, [role="dialog"]) { color-scheme: dark; }
+.avls-scroll-theme :is(input, textarea)::placeholder { color: hsl(var(--muted-foreground)); opacity: 1; }
+.avls-scroll-theme select option { background: hsl(var(--card)); color: hsl(var(--card-foreground)); }
+.avls-scroll-theme :is(main > :not(.cinematic-intro), .creative-studio) .bg-brand-gradient {
+  background-image: linear-gradient(120deg, var(--avls-action-blue), var(--avls-action-purple) 50%, var(--avls-action-magenta));
+}
+
+/* SOCIAL MEDIA is a local light island; its cards retain their dark palette. */
+.avls-scroll-theme .social-showcase.social-showcase {
+  --background: 40 15% 92.156862745%;
+  --foreground: 240 8% 8%;
+  --muted-foreground: 240 4% 42%;
+  --border: 40 10% 86%;
+  --ring: 266 76% 52%;
+  --social-background: #eeece8;
+  color: var(--avls-ink);
+  color-scheme: light;
+  background-color: var(--social-background);
+  /* Blend only the existing empty edge padding, without changing scroll or geometry. */
+  background-image: linear-gradient(to bottom,
+    var(--avls-screen) 0,
+    var(--social-background) 18px,
+    var(--social-background) calc(100% - 18px),
+    var(--avls-screen) 100%);
+}
+.avls-scroll-theme .social-showcase .social-title > span:first-child {
+  background-color: var(--brand-purple);
+  color: #fff;
+}
+.avls-scroll-theme .social-showcase .social-word-media {
+  color: var(--avls-ink);
+  -webkit-text-stroke-color: var(--avls-ink);
+}
+.avls-scroll-theme .social-showcase .social-title-star {
+  color: var(--brand-purple);
+}
+.avls-scroll-theme .social-showcase :is(.social-intro, .social-caption) {
+  color: hsl(var(--muted-foreground));
+}
+.avls-scroll-theme .social-showcase .social-intro > .studio-eyebrow {
+  color: var(--avls-ink);
+}
+.avls-scroll-theme .social-showcase .social-card {
+  --card: var(--avls-dark-card);
+  --card-foreground: var(--avls-dark-card-foreground);
+  --accent: var(--avls-dark-accent);
+  --accent-foreground: var(--avls-dark-accent-foreground);
+  --border: var(--avls-dark-border);
+}
