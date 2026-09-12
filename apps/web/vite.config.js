@@ -7,6 +7,9 @@ const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 
 const allDeps = Object.keys(pkg.dependencies || {});
 
 export default defineConfig({
+	build: {
+		outDir: 'dist',
+	},
 	optimizeDeps: {
 		include: allDeps,
 	},
