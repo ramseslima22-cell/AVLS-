@@ -2,7 +2,6 @@ import importPlugin from 'eslint-plugin-import';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
-import unicodeEscapePlugin from './eslint.unicode-escapes-plugin.mjs';
 
 export default [
 	{ ignores: ['node_modules/**', 'dist/**', 'build/**', 'vite.config.js'] },
@@ -51,11 +50,6 @@ export default [
 			// Disable expensive rules for performance
 			'import/no-cycle': 'off', // AI rarely makes this error, and the rule is very slow to run
 		},
-	},
-	{
-		files: ['**/*.jsx'],
-		plugins: { horizons: unicodeEscapePlugin },
-		rules: { 'horizons/no-unicode-escapes-in-jsx': 'warn' },
 	},
 	{ files: ['tools/**/*.js', 'tailwind.config.js'], languageOptions: { globals: globals.node } },
 ];

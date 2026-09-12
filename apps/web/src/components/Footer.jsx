@@ -3,7 +3,7 @@ import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from '@/lib/whatsapp';
 
 const LOGO_URL =
-	'https://horizons-cdn.hostinger.com/d0306d77-181b-4f01-a502-a7623b688350/634fe033e69c594372c7d6ef55f3cf4c.jpg';
+	'/images/logo.jpg';
 
 const NAV_LINKS = [
 	{ label: 'Início', href: '#inicio' },
