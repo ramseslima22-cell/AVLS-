@@ -1,0 +1,45 @@
+.rb-folder-stage {
+  height: clamp(290px, 33vw, 390px);
+  width: 100%; display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 32px; isolation: isolate;
+}
+.rb-folder { width: min(calc(100px * var(--folder-size)), 46%); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.rb-folder__back { perspective: 800px; position: relative; width: 100%; aspect-ratio: 5/4; border-radius: 0 16px 16px 16px; background: var(--folder-back-color); box-shadow: 0 25px 35px -20px #34281c66; }
+.rb-folder__back::before { content: ''; position: absolute; bottom: 99%; width: 34%; height: 13%; background: var(--folder-back-color); border-radius: 12px 16px 0 0; }
+.rb-folder__paper { position: absolute; z-index: 2; bottom: 10%; left: 50%; width: 78%; height: 82%; padding: 5px; background: rgba(229,221,207,.88); border: 1px solid #fffb; border-radius: 10px; transform: translate(-50%, 8%); transition: transform .6s cubic-bezier(.2,.8,.2,1), height .6s; box-shadow: 0 8px 20px #30251b20; backdrop-filter: blur(10px); pointer-events: none; }
+.rb-folder__paper--2 { width: 85%; height: 74%; background: #f0ebe1; }
+.rb-folder__paper--3 { width: 92%; height: 66%; background: #fffdf7; }
+.rb-folder__content { height: 100%; transform: translate(var(--magnet-x, 0px),var(--magnet-y, 0px)); transition: transform .2s ease-out; }
+.rb-folder__paper button { width: 100%; height: 100%; display: flex; flex-direction: column; text-align: left; overflow: hidden; border-radius: 6px; background: #fffcf6; }
+.rb-folder__paper img { width: 100%; height: 70%; flex: 1; min-height: 0; object-fit: cover; }
+.rb-folder__paper span { display: block; font-size: clamp(9px, 1vw, 12px); line-height: 1.25; padding: 8px 5px; color: #362b23; font-weight: 600; }
+.rb-folder__front { position: absolute; z-index: 3; inset: 0; background: linear-gradient(135deg, color-mix(in srgb, var(--folder-color) 82%, transparent), color-mix(in srgb, var(--folder-back-color) 74%, transparent)); border: 1px solid #ffffff42; border-radius: 12px 16px 16px 16px; transform-origin: bottom; transition: transform .6s cubic-bezier(.2,.8,.2,1); backdrop-filter: blur(12px); box-shadow: inset 0 1px #ffffff1f; pointer-events: none; }
+.rb-folder__front--right { opacity: .4; }
+.rb-folder__trigger { position: absolute; z-index: 4; inset: 0; display: flex; align-items: flex-start; justify-content: flex-end; flex-direction: column; gap: 8px; padding: 10%; width: 100%; text-align: left; color: #fffaf3; border-radius: 12px; transition: transform .6s, height .6s; transform-origin: bottom; }
+.rb-folder__mark { font-size: 8px; letter-spacing: .16em; opacity: .85; }
+.rb-folder__label { font-family: Sora, sans-serif; font-size: clamp(14px, 1.7vw, 23px); font-weight: 600; line-height: 1.2; }
+.rb-folder__hint { font-size: 10px; opacity: .9; }
+.rb-folder__trigger:focus-visible, .rb-folder__paper button:focus-visible { outline: 3px solid #463c28; outline-offset: 5px; }
+.rb-folder:has(.rb-folder__trigger:hover), .rb-folder.is-open { transform: translateY(-8px); }
+.rb-folder:not(.is-open):has(.rb-folder__trigger:hover) .rb-folder__paper { transform: translate(-50%, -8%); }
+.rb-folder.is-open .rb-folder__paper { pointer-events: auto; }
+.rb-folder.is-open .rb-folder__paper--1 { transform: translate(-117%, -68%) rotate(-13deg); }
+.rb-folder.is-open .rb-folder__paper--2 { transform: translate(13%, -65%) rotate(13deg); height: 82%; }
+.rb-folder.is-open .rb-folder__paper--3 { transform: translate(-50%, -112%) rotate(3deg); height: 82%; }
+.rb-folder.is-open .rb-folder__paper:hover, .rb-folder.is-open .rb-folder__paper:focus-within { z-index: 5; }
+.rb-folder.is-open .rb-folder__front { transform: rotateX(-32deg) skew(8deg) scaleY(.66); }
+.rb-folder.is-open .rb-folder__front--right { transform: rotateX(-32deg) skew(-8deg) scaleY(.66); }
+.rb-folder.is-open .rb-folder__trigger { top: auto; height: 55%; padding: 6% 10%; }
+.rb-folder.is-open .rb-folder__mark { display: none; }
+@media (max-width: 480px) {
+  .rb-folder-stage { height: 300px; padding-bottom: 30px; }
+  .rb-folder { width: 46%; }
+  .rb-folder__trigger { gap: 5px; }
+  .rb-folder__label { font-size: 15px; }
+  .rb-folder__hint { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-folder, .rb-folder * { transition: none !important; }
+}
+
+.rb-folder.is-open .rb-folder__back[data-paper-count="1"] .rb-folder__paper--1 { transform: translate(-50%, -95%) rotate(-5deg); }

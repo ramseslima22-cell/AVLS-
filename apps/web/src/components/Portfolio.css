@@ -1,0 +1,28 @@
+/* Palette scoped to the transplanted portfolio. */
+#trabalhos.portfolio-section {
+ --background: 40 23% 95%; --foreground: 240 8% 8%; --card: 0 0% 100%; --card-foreground: 240 8% 8%;
+ --muted-foreground: 240 4% 42%; --border: 40 10% 86%; --ring: 266 76% 52%;
+ color: hsl(var(--foreground)); color-scheme: light;
+ background: linear-gradient(180deg, #f3efe6, #eae5d9 70%, #f3efe6);
+}
+#trabalhos.portfolio-section .text-gradient { background-image: linear-gradient(92deg,#4352ac,#704094,#a74268); }
+#trabalhos.portfolio-section .bg-brand-gradient { background-image: linear-gradient(120deg, var(--brand-blue), var(--brand-purple), var(--brand-magenta)); }
+#trabalhos.portfolio-section :is(.bg-card, [class~="bg-card/70"]) { box-shadow: none; }
+.portfolio-section .portfolio-folder-panel {
+ background: radial-gradient(ellipse at 50% 45%, #fffdf7 5%, #f5f1e7 58%, #ece6da 100%);
+ box-shadow: 0 4px 0 #d9d0c2, 0 22px 45px -30px #4b382966;
+}
+.portfolio-section .portfolio-depth-scene { position: relative; perspective: 1100px; }
+.portfolio-section .portfolio-depth-surface { position: relative; height: 100%; transform-style: preserve-3d; }
+.portfolio-section .portfolio-depth-shine {
+ position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: inherit;
+ background: radial-gradient(circle at var(--light-x, 50%) var(--light-y, 50%), #fff9 0%, #fff0 65%);
+ opacity: 0; transition: opacity .4s;
+}
+.portfolio-section .portfolio-depth-scene[data-depth-enabled="true"]:hover > .portfolio-depth-surface > .portfolio-depth-shine { opacity: .19; }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+ .portfolio-section .portfolio-depth-scene { perspective: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .portfolio-section .portfolio-depth-shine { transition: none; }
+}

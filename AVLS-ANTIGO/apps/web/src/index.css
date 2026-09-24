@@ -1,0 +1,234 @@
+/*
+  AVLS — tema visual
+  Off-white + grafite + cores pontuais da marca
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  overflow-x: clip;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #876c46;
+  color: #fff;
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+  :root {
+    --background: 42 28% 94%;
+    --foreground: 27 19% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 27 19% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 27 19% 13%;
+    --primary: 27 19% 13%;
+    --primary-foreground: 40 23% 96%;
+    --secondary: 40 12% 90%;
+    --secondary-foreground: 27 19% 13%;
+    --muted: 40 12% 90%;
+    --muted-foreground: 28 11% 39%;
+    --accent: 40 12% 90%;
+    --accent-foreground: 27 19% 13%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 10% 86%;
+    --input: 40 10% 82%;
+    --ring: 32 30% 38%;
+    --radius: 0.75rem;
+    --brand-copper: #596bd0;
+    --brand-bronze: #9564bd;
+    --brand-olive: #d27990;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(92deg, var(--brand-copper) 0%, var(--brand-bronze) 48%, var(--brand-olive) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-brand-gradient {
+    background-image: linear-gradient(120deg, var(--brand-copper) 0%, var(--brand-bronze) 50%, var(--brand-olive) 100%);
+  }
+  .border-brand-gradient {
+    border-image: linear-gradient(120deg, var(--brand-copper), var(--brand-bronze), var(--brand-olive)) 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Paleta inspirada em madeira, luz natural e vegetação. */
+.hero-scene { background: #29231e; }
+.hero-photo {
+  background-image: url('/images/avls-workspace.jpg');
+  background-position: center;
+  background-size: cover;
+  inset: -12% -5%;
+  height: auto;
+  will-change: transform;
+}
+.hero-shade { background: linear-gradient(90deg, rgba(25,21,17,.92) 0%, rgba(25,21,17,.78) 38%, rgba(25,21,17,.23) 76%), linear-gradient(0deg, rgba(25,21,17,.55), transparent 50%); }
+.hero-accent { color: #e2bb94; }
+.hero-primary { background: #edcfaa; color: #30251b; transition: transform .3s, background .3s, box-shadow .3s; }
+.hero-primary:hover { background: #f5dfc2; transform: translateY(-3px); box-shadow: 0 14px 35px #0003; }
+.hero-status-dot { animation: status-glow 3s ease-in-out infinite; }
+.portfolio-section { background: linear-gradient(180deg, #f3efe6, #eae5d9 70%, #f3efe6); }
+.portfolio-folder-panel { background: radial-gradient(ellipse at 50% 45%, #fffdf7 5%, #f5f1e7 58%, #ece6da 100%); }
+@keyframes status-glow { 50% { box-shadow: 0 0 0 6px #c8d1a81a; opacity: .65; } }
+:focus-visible { outline: 2px solid #7e6544; outline-offset: 5px; }
+@media (max-width: 640px) {
+  .hero-shade { background: linear-gradient(90deg, #191511e8, #191511a3), linear-gradient(0deg, #191511bb, transparent); }
+  .hero-photo { background-position: 60% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .hero-photo { will-change: auto; }
+}
+
+/* Profundidade em CSS: sem canvas ou dependências adicionais. */
+.depth-scene { position: relative; perspective: 1100px; }
+.depth-surface { position: relative; height: 100%; transform-style: preserve-3d; }
+.depth-shine {
+  position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(circle at var(--light-x, 50%) var(--light-y, 50%), #fff9 0%, #fff0 65%);
+  opacity: 0; transition: opacity .4s;
+}
+.depth-scene[data-depth-enabled="true"]:hover > .depth-surface > .depth-shine { opacity: .19; }
+.depth-service-card { transform-style: preserve-3d; box-shadow: 0 3px 0 #d8d0c4, 0 16px 36px -24px #3c291b55; }
+.depth-service-card > * { transform: translateZ(16px); }
+.portfolio-folder-panel { box-shadow: 0 4px 0 #d9d0c2, 0 22px 45px -30px #4b382966; }
+.hero-scene { perspective: 1200px; }
+.hero-photo { transform-origin: 50% 45%; }
+.hero-depth-title { text-shadow: 0 2px 0 #493a2b88, 0 12px 35px #0008; }
+.hero-ambient-light {
+  position: absolute; width: 55%; height: 100%; top: -30%; right: -15%; z-index: -5;
+  pointer-events: none; opacity: .38; transform: rotate(-25deg);
+  background: radial-gradient(ellipse, #f1d4a733, transparent 65%);
+}
+.hero-glass-note {
+  position: absolute; right: max(2rem, calc((100vw - 1280px) / 2 + 2rem)); bottom: 100px;
+  width: 240px; padding: 25px; border: 1px solid #ffffff38; border-radius: 20px;
+  background: linear-gradient(135deg, #e4cba523, #1c171a66); backdrop-filter: blur(16px);
+  box-shadow: 8px 12px 0 -6px #e4cba51a, 0 30px 65px -25px #000a, inset 0 1px 0 #ffffff25;
+  transform: perspective(900px) rotateY(-12deg) rotateX(6deg);
+  animation: glass-drift 7s ease-in-out infinite;
+}
+.hero-glass-note > span:not(.hero-glass-line) { display: block; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #f1dac0; }
+.hero-glass-note strong { display: block; margin-top: 13px; font: 500 20px/1.5 Sora, sans-serif; }
+.hero-glass-line { display: block; width: 32px; height: 2px; margin-bottom: 18px; background: #e2bb94; }
+@keyframes glass-drift {
+  50% { transform: perspective(900px) translateY(-10px) rotateY(-8deg) rotateX(4deg); }
+}
+@media (max-width: 1279px) { .hero-glass-note { display: none; } }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .hero-glass-note { animation: none; transform: none; }
+  .depth-service-card > * { transform: none; }
+  .depth-scene { perspective: none; }
+}
+
+/* Superfícies claras preservam a leitura sobre a cena fixa. */
+.site-over-3d main > section { position: relative; isolation: isolate; background: transparent; }
+.site-over-3d main > section:not(.hero-scene)::before { content: none; }
+.site-over-3d .hero-scene { min-height: 110svh; background: transparent; }
+.site-over-3d .hero-shade { background: none; }
+.site-over-3d .hero-depth-title { text-shadow: none; }
+.site-over-3d .hero-accent { color: #655197; }
+.site-over-3d .hero-primary { background: #272b35; color: #fff; }
+.site-over-3d .hero-primary:hover { background: #49415e; }
+.site-over-3d header { background: #faf9f2e6; border-color: #292b351a; backdrop-filter: blur(16px); }
+.site-over-3d .hero-glass-note { background: #ffffffe0; border-color: #fff; color: #292b35; box-shadow: 0 20px 60px -35px #292b3540; animation: none; transform: none; }
+.site-over-3d .hero-glass-note > span:not(.hero-glass-line) { color: #655197; }
+.site-over-3d .hero-glass-line { background: linear-gradient(90deg,#596bd0,#9564bd,#d27990,#ef994e); }
+.site-over-3d .depth-service-card,
+.site-over-3d .portfolio-folder-panel,
+.site-over-3d #contato form,
+.site-over-3d [role="group"].bg-card { background: #fffef9; border-color: #c7c3ba; box-shadow: 0 14px 34px -20px #22263066; }
+.site-over-3d footer { background: #f7f5f0eb; }
+@media (max-width: 760px) {
+  .site-over-3d .hero-shade { background: none; }
+
+}
+
+/* Contrast belongs to content surfaces, never a veil over the entire office. */
+.site-over-3d .hero-ambient-light { display: none; }
+.hero-copy-panel {
+  width: min(100%, 680px); padding: clamp(24px, 3vw, 40px);
+  background: #f7f5f0; color: #24262e; border: 1px solid #d1cdc3;
+  border-radius: 24px; box-shadow: 0 18px 50px -28px #24262e66;
+}
+.site-over-3d main > section:not(.hero-scene) > .max-w-7xl {
+  background: #f7f5f0; color: #24262e; border: 1px solid #d1cdc3;
+  border-radius: 24px; padding-top: 32px; padding-bottom: 32px;
+  box-shadow: 0 18px 50px -28px #24262e66;
+  width: calc(100% - 32px);
+}
+.site-over-3d #videos button,
+.site-over-3d #trabalhos button.bg-card {
+  background: #fffef9; border-color: #bdb9b0;
+  box-shadow: 0 12px 28px -16px #24262e66;
+}
+.site-over-3d .hero-bottom-label { background: #f7f5f0; padding: 8px 12px; border-radius: 6px; }
+.site-over-3d .text-gradient { background-image: linear-gradient(92deg,#4352ac,#704094,#a74268); }
+.site-over-3d [aria-label="Chamada para contato"] .text-gradient { background-image: linear-gradient(92deg,#aab5ff,#d6b2ef,#ffb3c9); }
+@media (max-width: 760px) {
+  .hero-copy-panel { padding: 24px 20px; }
+}
+
+.hero-copy-panel .hero-depth-title { font-size: clamp(1.75rem, 4.5vw, 4rem); overflow-wrap: anywhere; }

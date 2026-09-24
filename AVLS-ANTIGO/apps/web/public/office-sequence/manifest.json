@@ -1,0 +1,35 @@
+{
+  "version": "preview",
+  "desktop": {
+    "width": 640,
+    "height": 360,
+    "frames": [
+      {
+        "frame": 1,
+        "url": "/office-sequence/preview/desktop-1.webp"
+      },
+      {
+        "frame": 41,
+        "url": "/office-sequence/preview/desktop-41.webp"
+      },
+      {
+        "frame": 81,
+        "url": "/office-sequence/preview/desktop-81.webp"
+      },
+      {
+        "frame": 121,
+        "url": "/office-sequence/preview/desktop-121.webp"
+      }
+    ]
+  },
+  "mobile": {
+    "width": 360,
+    "height": 640,
+    "frames": [
+      {
+        "frame": 1,
+        "url": "/office-sequence/preview/mobile-1.webp"
+      }
+    ]
+  }
+}

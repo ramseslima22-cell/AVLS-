@@ -1,0 +1,22 @@
+{
+  "workspaces": {
+    ".": {
+      "entry": [],
+      "project": []
+    },
+    "apps/web": {
+      "entry": [
+        "src/main.jsx",
+        "tools/generate-llms.js"
+      ],
+      "project": [
+        "src/**/*.{js,jsx}"
+      ],
+      "paths": {
+        "@/*": [
+          "./src/*"
+        ]
+      }
+    }
+  }
+}

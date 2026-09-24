@@ -1,0 +1,25 @@
+from PIL import Image,ImageDraw,ImageFont
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'working/office-cinema/assets';OUT.mkdir(parents=True,exist_ok=True)
+def font(n,bold=False):return ImageFont.truetype('C:/Windows/Fonts/arialbd.ttf' if bold else 'C:/Windows/Fonts/arial.ttf',n)
+logo=Image.open(ROOT/'apps/web/public/images/avls-logo.jpg').convert('RGB').crop((114,196,388,291))
+logo.thumbnail((240,85))
+im=Image.new('RGB',(1280,800),'#eeeae2');d=ImageDraw.Draw(im);im.paste(logo,(64,40))
+d.text((795,76),'ESTÚDIO DIGITAL',font=font(21),fill='#484a50')
+d.rounded_rectangle((48,174,1232,698),radius=18,fill='#151820')
+d.text((94,228),'Do ideal',font=font(81,True),fill='#f7f4ed');d.text((94,323),'ao real.',font=font(81,True),fill='#f7f4ed')
+d.text((96,450),'Estratégia. Criação. Resultados.',font=font(27),fill='#c4c6cd')
+d.rounded_rectangle((94,532,385,602),35,fill='#f2eee6');d.text((124,552),'Vamos criar juntos',font=font(25,True),fill='#171a22')
+d.polygon([(765,346),(1090,246),(951,483),(681,574)],fill='#514c91');d.polygon([(857,318),(1090,246),(969,453),(867,464)],fill='#327bd8');d.polygon([(681,574),(867,464),(969,453),(868,566)],fill='#bd528d')
+for i,c in enumerate(['#327bd8','#7754b4','#bd528d','#da9755']):d.rectangle((94+i*31,647,114+i*31,651),fill=c)
+d.text((65,739),'Sites  /  Identidade  /  Conteúdo',font=font(25),fill='#40434b');im.save(OUT/'avls-screen.png')
+im=Image.new('RGB',(1024,640),'#33373c');d=ImageDraw.Draw(im)
+for r in range(5):
+ for c in range(13):
+  x=20+c*76;y=24+r*67;d.rounded_rectangle((x,y,x+64,y+54),6,fill='#131619');d.text((x+20,y+15),'•',font=font(14),fill='#80838a')
+d.rounded_rectangle((350,390,685,595),12,outline='#767b84',width=3);im.save(OUT/'keyboard.png')
+im=Image.new('RGB',(1024,1024),'#d9d2c6');d=ImageDraw.Draw(im);d.rectangle((422,5,982,1015),fill='#ede7dc')
+for i in range(8):d.ellipse((543-i*8,202-i*7,854+i*8,774+i*7),outline='#343b43',width=3)
+for i,c in enumerate(['#5276b4','#8877a6','#bd819b','#cda17a']):d.rectangle((624+i*43,884,650+i*43,891),fill=c)
+im.save(OUT/'studio-artwork.png')
+print(OUT)

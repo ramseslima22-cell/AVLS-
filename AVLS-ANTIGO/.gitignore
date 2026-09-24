@@ -1,0 +1,18 @@
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+.migration-backup/
+vault/
+app.tar.gz
+.DS_Store
+Thumbs.db
+apps/web/public/llms.txt
+
+# Blender sources, reference extracts and preview renders
+working/office-cinema/
+tools/office-cinema/__pycache__/
