@@ -8,16 +8,18 @@ export default function MediaLightbox({ item, open, onOpenChange }) {
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="max-w-3xl border-border bg-card p-0 overflow-hidden">
+			<DialogContent className="max-h-[90dvh] overflow-y-auto max-w-3xl border-border bg-card p-0 overflow-x-hidden">
 				<div className="bg-black">
 					{item.media?.type === 'video' ? (
 						<video
+							key={item.media.src}
 							src={item.media.src}
 							poster={item.cover || item.thumbnail}
+							preload="metadata"
 							controls
 							autoPlay
 							playsInline
-							className="aspect-video w-full object-contain"
+							className="mx-auto max-h-[65dvh] w-auto max-w-full object-contain"
 						>
 							Seu navegador não suporta a reprodução de vídeo.
 						</video>

@@ -1,40 +1,65 @@
-// ============================================================
-// EDITE AQUI PARA ADICIONAR VÍDEOS
-// ------------------------------------------------------------
-// Como adicionar um novo vídeo:
-//   1. Coloque o arquivo de vídeo (ex.: .mp4) na pasta public/videos/
-//      e uma imagem de capa (thumbnail) na mesma pasta.
-//   2. Copie um dos objetos abaixo e ajuste os campos:
-//        id          → texto único, sem espaços (ex.: 'meu-video')
-//        title       → título exibido no card
-//        description → texto curto exibido no player
-//        thumbnail   → caminho da capa (ex.: '/videos/meu-video.png')
-//        media       → { type: 'video', src: '/videos/meu-video.mp4' }
-//   3. Para remover um vídeo, basta apagar o objeto dele da lista.
-// Observação: os vídeos de exemplo abaixo usam apenas a capa.
-// Substitua o campo `src` pelo caminho do seu arquivo .mp4.
-// ============================================================
-
+// Posters extraídos dos próprios vídeos; os MP4 só são abertos no player.
 export const videos = [
-	{
-		id: 'bastidores-producao',
-		title: 'Bastidores de produção',
-		description: 'Um olhar sobre o processo criativo e de produção da AVLS.',
-		thumbnail: '/videos/video-1.png',
-		media: { type: 'video', src: '/videos/video-1.mp4' },
-	},
-	{
-		id: 'motion-identidade',
-		title: 'Motion e identidade em movimento',
-		description: 'Direção de arte e motion graphics para marcas digitais.',
-		thumbnail: '/videos/video-2.png',
-		media: { type: 'video', src: '/videos/video-2.mp4' },
-	},
-	{
-		id: 'conteudo-redes',
-		title: 'Conteúdo para redes sociais',
-		description: 'Produção de vídeos verticais pensados para engajar e converter.',
-		thumbnail: '/videos/video-3.png',
-		media: { type: 'video', src: '/videos/video-3.mp4' },
-	},
+  {
+    "id": "3-brinquedos",
+    "title": "3 Brinquedos",
+    "description": "3 Brinquedos — produção audiovisual AVLS.",
+    "thumbnail": "/videos/3-brinquedos-poster.jpg",
+    "media": {
+      "type": "video",
+      "src": "/videos/3 Brinquedos .mp4"
+    }
+  },
+  {
+    "id": "luz-do-painel",
+    "title": "Luz do painel",
+    "description": "Luz do painel — produção audiovisual AVLS.",
+    "thumbnail": "/videos/luz-do-painel-poster.jpg",
+    "media": {
+      "type": "video",
+      "src": "/videos/Luz do painel .mp4"
+    }
+  },
+  {
+    "id": "paciencia",
+    "title": "Paciência",
+    "description": "Paciência — produção audiovisual AVLS.",
+    "thumbnail": "/videos/paciencia-poster.jpg",
+    "media": {
+      "type": "video",
+      "src": "/videos/Paciência .mp4"
+    }
+  },
+  {
+    "id": "pesa-mais",
+    "title": "Pesa mais",
+    "description": "Pesa mais — produção audiovisual AVLS.",
+    "thumbnail": "/videos/pesa-mais-poster.jpg",
+    "media": {
+      "type": "video",
+      "src": "/videos/Pesa mais .mp4"
+    }
+  },
+  {
+    "id": "pneus",
+    "title": "Pneus",
+    "description": "Pneus — produção audiovisual AVLS.",
+    "thumbnail": "/videos/pneus-poster.jpg",
+    "media": {
+      "type": "video",
+      "src": "/videos/Pneus.mp4"
+    }
+  },
+  {
+    "id": "rr-mecanica",
+    "title": "RR mecanica",
+    "description": "RR mecanica — produção audiovisual AVLS.",
+    "thumbnail": "/videos/rr-mecanica-poster.jpg",
+    "media": {
+      "type": "video",
+      "src": "/videos/RR mecanica .mp4"
+    }
+  }
 ];
+
+export const heroVideo = videos.find(video => video.id === 'rr-mecanica');

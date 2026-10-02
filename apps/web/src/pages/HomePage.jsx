@@ -9,8 +9,6 @@ import Header from '@/components/Header';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Videos from '@/components/Videos';
-import Process from '@/components/Process';
-import About from '@/components/About';
 import CtaBanner from '@/components/CtaBanner';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -44,8 +42,6 @@ export default function HomePage() {
 				<Services />
 				<Portfolio />
 				<Videos />
-				<Process />
-				<About />
 				<CtaBanner />
 				<Contact />
 			</main>

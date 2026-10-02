@@ -1,0 +1,10 @@
+.avls-nav-link {
+  color: #fff;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.avls-nav-link:hover,
+.avls-nav-link:focus-visible {
+  color: #ba91ff;
+  text-shadow: 0 0 8px rgb(139 63 228 / 55%), 0 0 16px rgb(139 63 228 / 30%);
+}

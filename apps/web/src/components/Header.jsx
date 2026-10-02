@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/s
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { WHATSAPP_URL } from '@/lib/whatsapp';
 import { cn } from '@/lib/utils';
+import './Header.css';
 
 const LOGO_URL =
 	'/images/logo.jpg';
@@ -32,7 +33,7 @@ export default function Header() {
 			className={cn(
 				'fixed inset-x-0 top-0 z-50 transition-all duration-300',
 				scrolled
-					? 'border-b border-border/70 bg-background/85 shadow-[0_8px_30px_-18px_rgba(20,20,25,0.35)] backdrop-blur-xl'
+					? 'border-b border-border/70 bg-black/85 shadow-[0_8px_30px_-18px_rgba(20,20,25,0.35)] backdrop-blur-xl'
 					: 'bg-transparent'
 			)}
 		>
@@ -52,13 +53,9 @@ export default function Header() {
 						<a
 							key={link.href}
 							href={link.href}
-							className="group relative text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+							className="avls-nav-link relative text-sm font-medium"
 						>
 							{link.label}
-							<span
-								className="absolute -bottom-1.5 left-0 h-0.5 w-0 bg-brand-gradient transition-all duration-300 group-hover:w-full"
-								aria-hidden="true"
-							/>
 						</a>
 					))}
 				</nav>
@@ -85,7 +82,7 @@ export default function Header() {
 								<Menu className="h-5 w-5" />
 							</button>
 						</SheetTrigger>
-						<SheetContent side="right" className="w-[85vw] max-w-sm bg-background p-0">
+						<SheetContent side="right" className="w-[85vw] max-w-sm bg-[#15141b] p-0">
 							<SheetTitle className="sr-only">Menu de navegação</SheetTitle>
 							<div className="flex h-full flex-col px-7 pb-8 pt-20">
 								<nav className="flex flex-col gap-1" aria-label="Menu móvel">
@@ -94,7 +91,7 @@ export default function Header() {
 											key={link.href}
 											href={link.href}
 											onClick={() => setOpen(false)}
-											className="group flex items-center justify-between border-b border-border/70 py-4 font-display text-2xl font-semibold text-foreground transition-colors hover:text-transparent hover:[background:linear-gradient(92deg,#2f6bff,#8b3fe4,#e83e9c)] hover:[-webkit-background-clip:text] hover:[background-clip:text]"
+											className="avls-nav-link flex items-center justify-between border-b border-border/70 py-4 font-display text-2xl font-semibold"
 										>
 											{link.label}
 											<span className="text-xs font-medium text-muted-foreground">

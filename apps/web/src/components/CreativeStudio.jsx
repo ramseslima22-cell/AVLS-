@@ -29,7 +29,7 @@ export default function CreativeStudio() {
 	const ref = useRef(null);
 	useCinematic(ref, animateStudio);
 	return (
-		<section ref={ref} className="creative-studio" aria-labelledby="studio-title">
+		<section id="sobre" ref={ref} className="creative-studio" aria-labelledby="studio-title">
 			<div className="studio-glow" aria-hidden="true" />
 			<div className="studio-topline" data-studio-reveal>
 				<p className="studio-eyebrow">AVLS CREATIVE STUDIO</p>
@@ -59,9 +59,6 @@ export default function CreativeStudio() {
 					<div className="studio-metrics" data-float><MoveUpRight size={20} /><span>Ideias que<br /><b>ganham alcance.</b></span><div className="studio-bars"><i /><i /><i /><i /><i /></div></div>
 					<span className="studio-corner studio-corner-a" /><span className="studio-corner studio-corner-b" />
 				</div>
-			</div>
-			<div className="studio-disciplines" data-studio-reveal>
-				{['Social Media', 'Branding', 'Reels', 'Design', 'Ads', 'Web', 'Motion'].map((label, index) => <span key={label}><i>0{index + 1}</i>{label}</span>)}
 			</div>
 		</section>
 	);

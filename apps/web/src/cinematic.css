@@ -90,9 +90,6 @@
 .studio-corner { position: absolute; width: 18px; height: 18px; border-color: #8b3fe4; }
 .studio-corner-a { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; }
 .studio-corner-b { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; }
-.studio-disciplines { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 25px; border-top: 1px solid hsl(var(--border)); padding-top: 24px; }
-.studio-disciplines > span { display: flex; gap: 10px; font-size: 12px; font-weight: 500; }
-.studio-disciplines i { font: normal 8px ui-monospace, monospace; color: hsl(var(--muted-foreground)); }
 .social-showcase { position: relative; padding: 55px max(20px, calc((100vw - 1216px) / 2)) 30px; overflow: hidden; background: #eeece8; }
 .social-intro > span { font: 9px ui-monospace, monospace; color: hsl(var(--muted-foreground)); }
 .social-title { display: flex; justify-content: space-between; font: 800 clamp(54px, 10.8vw, 156px)/1.1 Sora, sans-serif; letter-spacing: -.075em; margin: 22px 0 26px; }
@@ -169,7 +166,6 @@
   .studio-play { top: 90px; }
   .studio-window-bar { font-size: 6px; }
   .studio-metrics { padding: 12px; bottom: 10px; left: 2%; }
-  .studio-disciplines { justify-content: flex-start; gap: 16px 24px; }
   .social-intro > span { display: none; }
   .social-title { font-size: 10.4vw; }
   .social-word-media { gap: 5px; -webkit-text-stroke-width: 1px; }
@@ -183,3 +179,36 @@
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .social-viewport { scroll-snap-type: none; }
 }
+
+/* Um único vídeo atravessa o Hero e a continuação escura. */
+.cinematic-intro {
+  --background: var(--avls-dark-background);
+  --foreground: var(--avls-dark-foreground);
+  --card: var(--avls-dark-card);
+  --card-foreground: var(--avls-dark-card-foreground);
+  --primary: var(--avls-dark-primary);
+  --primary-foreground: var(--avls-dark-primary-foreground);
+  --secondary: var(--avls-dark-secondary);
+  --secondary-foreground: var(--avls-dark-secondary-foreground);
+  --muted: var(--avls-dark-muted);
+  --muted-foreground: var(--avls-dark-muted-foreground);
+  --accent: var(--avls-dark-accent);
+  --accent-foreground: var(--avls-dark-accent-foreground);
+  --border: var(--avls-dark-border);
+  --input: var(--avls-dark-input);
+  --ring: var(--avls-dark-ring);
+  color: hsl(var(--foreground));
+  background: var(--avls-screen);
+}
+.cinematic-intro .intro-stage { isolation: isolate; }
+.intro-video-backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.intro-video-backdrop video { width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
+.intro-video-backdrop::after { content: ""; position: absolute; inset: 0; background: rgb(0 0 0 / 65%); }
+.cinematic-intro .intro-stage .hero-cinematic,
+.cinematic-intro .intro-stage .creative-studio { background: transparent; }
+.social-card { position: relative; }
+.social-card-open { position: absolute; inset: 0; z-index: 3; width: 100%; cursor: pointer; border-radius: inherit; }
+.social-card-open:focus-visible { outline: 2px solid #ba91ff; outline-offset: -4px; }
+.social-card-art:has(> img)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 35%, rgb(0 0 0 / 65%)); }
+.social-card-art:has(> img) h3 { color: white; }
+.social-card-play { z-index: 1; }

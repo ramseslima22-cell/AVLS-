@@ -1,25 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { ArrowUpRight, Play, Heart, Bookmark, MoveRight } from 'lucide-react';
+import MediaLightbox from '@/components/MediaLightbox';
+import { videos } from '@/data/videos';
 import useCinematic, { gsap } from '@/hooks/use-cinematic';
 
-const CONCEPTS = [
-	{ id: 'brand', format: 'Post / Branding', title: 'Sua marca.\nOutra dimensão.', variant: 'brand' },
-	{ id: 'reel', format: 'Reel / Motion', title: 'Feito para\nser sentido.', variant: 'reel' },
-	{ id: 'type', format: 'Carrossel / Design', title: 'IDEIAS\nEM ALTA.', variant: 'type' },
-	{ id: 'campaign', format: 'Case / Campanha', title: 'Conexões\nque ficam.', variant: 'campaign' },
+const CARD_STYLES = [
+	{ format: 'Post / Branding', title: 'Sua marca.\nOutra dimensão.', variant: 'brand' },
+	{ format: 'Reel / Motion', title: 'Feito para\nser sentido.', variant: 'reel' },
+	{ format: 'Carrossel / Design', title: 'IDEIAS\nEM ALTA.', variant: 'type' },
+	{ format: 'Case / Campanha', title: 'Conexões\nque ficam.', variant: 'campaign' },
 ];
 
-// A local cover and a title can replace each concept without changing the scroll scene.
-export function SocialCard({ format, title, variant = 'brand', cover, concept = true }) {
+// A moldura e os textos dos cards acompanham os frames reais.
+export function SocialCard({ format, title, variant = 'brand', cover, onClick, videoTitle }) {
 	return (
-		<article className={`social-card social-card--${variant}`}>
+		<article className={`social-card social-card--${variant}`} >
 			<div className="social-card-top"><span>AVLS®</span><span>{format}</span><ArrowUpRight size={16} aria-hidden="true" /></div>
 			<div className="social-card-art">
-				{cover ? <img src={cover} alt={title} loading="lazy" /> : <div className="social-card-shape" aria-hidden="true" />}
+				<img src={cover} alt={videoTitle} loading="lazy" />
 				<h3>{title}</h3>
 				{variant === 'reel' && <span className="social-card-play" aria-hidden="true"><Play size={22} fill="currentColor" /></span>}
 			</div>
-			<div className="social-card-bottom"><span>{concept ? 'ESTUDO CRIATIVO' : format}</span><span aria-hidden="true"><Heart size={16} /><Bookmark size={16} /></span></div>
+			<div className="social-card-bottom"><span>{format}</span><span aria-hidden="true"><Heart size={16} /><Bookmark size={16} /></span></div>
+			<button type="button" className="social-card-open" onClick={onClick} aria-label={`Assistir ${videoTitle}`} />
 		</article>
 	);
 }
@@ -52,16 +55,18 @@ function animateSocial(section, { desktop }) {
 
 export default function SocialShowcase() {
 	const ref = useRef(null);
+	const [selected, setSelected] = useState(null);
 	useCinematic(ref, animateSocial);
 	return (
 		<section ref={ref} className="social-showcase" aria-labelledby="social-title">
 			<div className="social-intro"><p className="studio-eyebrow">CONTEÚDO QUE OCUPA ESPAÇO</p><span>CRIAÇÃO / CONEXÃO / CULTURA</span></div>
 			<h2 id="social-title" className="social-title"><span>SOCIAL</span><span className="social-word-media">MEDIA<span className="social-title-star" aria-hidden="true">✳</span></span></h2>
-			<div className="social-viewport" tabIndex={0} role="region" aria-label="Estudos criativos de social media; deslize ou use as setas para explorar">
-				<div className="social-track">{CONCEPTS.map((concept) => <SocialCard key={concept.id} {...concept} />)}</div>
+			<div className="social-viewport" tabIndex={0} role="region" aria-label="Trabalhos de social media; deslize ou use as setas para explorar">
+				<div className="social-track">{videos.map((video, index) => <SocialCard key={video.id} {...CARD_STYLES[index % CARD_STYLES.length]} cover={video.thumbnail} videoTitle={video.title} onClick={() => setSelected(video)} />)}</div>
 			</div>
 			<div className="social-caption"><p>Explorações visuais. Espaço para as próximas grandes histórias.</p><span>EXPLORE <MoveRight size={18} aria-hidden="true" /></span></div>
 			<div className="social-progress" aria-hidden="true"><div className="social-scroll-progress" /></div>
+			<MediaLightbox item={selected} open={Boolean(selected)} onOpenChange={open => { if (!open) setSelected(null); }} />
 		</section>
 	);
 }

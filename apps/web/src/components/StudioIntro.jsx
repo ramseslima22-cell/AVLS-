@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import Hero from '@/components/Hero';
 import CreativeStudio from '@/components/CreativeStudio';
+import { heroVideo } from '@/data/videos';
 import { gsap } from '@/hooks/use-cinematic';
 
 function animateIntro(intro, { desktop, motion }) {
@@ -16,7 +17,6 @@ function animateIntro(intro, { desktop, motion }) {
 		'primary', 'primary-foreground', 'secondary', 'secondary-foreground', 'muted', 'muted-foreground',
 		'accent', 'accent-foreground', 'border', 'input', 'ring'];
 	for (const token of tokens) theme['--' + token] = rootStyles.getPropertyValue('--avls-dark-' + token).trim();
-	const screenColor = getComputedStyle(intro.querySelector('.hero-display-surface')).backgroundColor;
 	root.classList.add('avls-scroll-theme');
 	const cleanup = () => {
 		root.classList.remove('avls-scroll-theme');
@@ -31,7 +31,6 @@ function animateIntro(intro, { desktop, motion }) {
 		return cleanup;
 	}
 	if (desktop) intro.classList.add('intro-enhanced');
-	gsap.set(studio, { backgroundColor: screenColor });
 	const centerOffset = (axis) => {
 		let position = 0;
 		for (let element = display; element && element !== hero; element = element.offsetParent) {
@@ -88,5 +87,15 @@ export default function StudioIntro() {
 		}, context => animateIntro(ref.current, context.conditions), ref);
 		return () => media.revert();
 	}, []);
-	return <div ref={ref} className="cinematic-intro"><div className="intro-stage"><Hero /><CreativeStudio /></div></div>;
+	return (
+		<div ref={ref} className="cinematic-intro">
+			<div className="intro-stage">
+				<div className="intro-video-backdrop" aria-hidden="true">
+					<video src={heroVideo.media.src} poster={heroVideo.thumbnail} autoPlay muted loop playsInline preload="metadata" tabIndex={-1} />
+				</div>
+				<Hero />
+				<CreativeStudio />
+			</div>
+		</div>
+	);
 }
