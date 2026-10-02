@@ -6,7 +6,6 @@ import SocialShowcase from '@/components/SocialShowcase';
 import '@/cinematic.css';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
-import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Videos from '@/components/Videos';
 import CtaBanner from '@/components/CtaBanner';
@@ -39,7 +38,6 @@ export default function HomePage() {
 			<main>
 				<StudioIntro />
 				<SocialShowcase />
-				<Services />
 				<Portfolio />
 				<Videos />
 				<CtaBanner />
