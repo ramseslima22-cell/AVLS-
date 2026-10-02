@@ -6,7 +6,7 @@ import { ArrowUpRight, FolderOpen, Grid2X2 } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import SectionHeader from '@/components/SectionHeader';
 import MediaLightbox from '@/components/MediaLightbox';
-import Folder from '@/components/Folder';
+import AnimatedFolder from '@/components/AnimatedFolder';
 import { projects, projectCategories } from '@/data/projects';
 import { cn } from '@/lib/utils';
 
@@ -53,11 +53,22 @@ export default function Portfolio() {
                 {groups.map(group => (
                   <PortfolioDepthSurface key={group.category} strength={3} surfaceClassName="rounded-3xl">
                   <article className="portfolio-folder-panel rounded-3xl border border-border/80 px-3 pb-7 sm:px-8">
-                    <Folder color={group.color} size={3.2} label={group.category} items={group.projects.slice(0, 3).map(project => (
+                    <AnimatedFolder
+                      title={group.category}
+                      eyebrow="AVLS / PORTFÓLIO"
+                      subtitle="Explorar projetos +"
+                      openLabel="Abrir pasta de"
+                      closeLabel="Fechar pasta de"
+                      color={group.color}
+                      size={3.2}
+                      projectCount={group.projects.length}
+                    >
+                      {group.projects.slice(0, 3).map(project => (
                       <button key={project.id} type="button" onClick={() => setSelected(project)} aria-label={`Abrir projeto ${project.title}`}>
                         <img src={project.cover} alt="" loading="lazy" /><span>{project.title}</span>
                       </button>
-                    ))} />
+                      ))}
+                    </AnimatedFolder>
                     <div className="flex items-center justify-between gap-4 border-t border-border/70 px-3 pt-5">
                       <h3 className="font-display text-lg font-semibold">{group.category}</h3>
                       <button type="button" onClick={() => { setActiveCategory(group.category); setView('grid'); }} className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-foreground">

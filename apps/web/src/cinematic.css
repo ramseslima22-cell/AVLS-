@@ -90,7 +90,7 @@
 .studio-corner { position: absolute; width: 18px; height: 18px; border-color: #8b3fe4; }
 .studio-corner-a { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; }
 .studio-corner-b { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; }
-.social-showcase { position: relative; padding: 55px max(20px, calc((100vw - 1216px) / 2)) 30px; overflow: hidden; background: #eeece8; }
+.social-showcase { position: relative; padding: 55px clamp(20px, 2vw, 32px) 30px; overflow: hidden; background: #eeece8; }
 .social-intro > span { font: 9px ui-monospace, monospace; color: hsl(var(--muted-foreground)); }
 .social-title { display: flex; justify-content: space-between; font: 800 clamp(54px, 10.8vw, 156px)/1.1 Sora, sans-serif; letter-spacing: -.075em; margin: 22px 0 26px; }
 .social-word-media { display: inline-flex; align-items: center; gap: 12px; color: #eeece8; -webkit-text-stroke: 1.5px #141419; paint-order: stroke fill; }
@@ -119,6 +119,10 @@
 .social-caption > span { display: flex; align-items: center; gap: 12px; font-size: 9px; letter-spacing: .14em; }
 .social-progress { height: 1px; background: #14141915; }
 .social-scroll-progress { height: 100%; background: linear-gradient(90deg, #2f6bff, #8b3fe4, #e83e9c); transform-origin: left; }
+@media (min-width: 1024px) {
+  .social-card { width: clamp(300px, 29vw, 520px); }
+  .social-card-art { height: clamp(260px, 32vh, 430px); }
+}
 .cinematic-services { position: relative; }
 .service-scene { position: relative; display: grid; grid-template-columns: 40px 1fr 28px; gap: 18px; align-items: start; padding: 42px 0; border-top: 1px solid hsl(var(--border)); }
 .service-number { font: 11px ui-monospace, monospace; color: #77717e; margin-top: 6px; }
