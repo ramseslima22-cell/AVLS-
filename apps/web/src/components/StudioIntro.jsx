@@ -91,7 +91,7 @@ export default function StudioIntro() {
 		<div ref={ref} className="cinematic-intro">
 			<div className="intro-stage">
 				<div className="intro-video-backdrop" aria-hidden="true">
-					<video src={heroVideo.media.src} poster={heroVideo.thumbnail} autoPlay muted loop playsInline preload="metadata" tabIndex={-1} />
+					<video src="/videos/avls-hero.mp4" poster={heroVideo.thumbnail} autoPlay muted loop playsInline preload="metadata" tabIndex={-1} />
 				</div>
 				<Hero />
 				<CreativeStudio />
