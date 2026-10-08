@@ -11,3 +11,7 @@
 .feature-navigation button { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #f5f3ef66; border-radius: 50%; transition: background .25s; }
 .feature-navigation button:hover { background: var(--brand-purple); }
 @media (max-width: 767px) { .video-feature { min-height: 85svh; } .video-feature .scene-center { padding-block: 100px 65px; } .feature-bottom { flex-direction: column; align-items: flex-start; gap: 22px; } .feature-navigation { width: 100%; justify-content: flex-end; } .feature-navigation > span { margin-right: auto; } }
+
+/* Preserve the full-resolution vertical frame without stretching it across desktop. */
+.feature-image--portrait { background: radial-gradient(ellipse at center, #172b3c 0%, #0a0a10 75%); }
+.feature-image--portrait img { object-fit: contain; object-position: center; }

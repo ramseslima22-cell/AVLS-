@@ -1,10 +1,10 @@
-// Posters extraídos dos próprios vídeos; os MP4 só são abertos no player.
+// Capas dos projetos; os MP4 só são abertos no player.
 export const videos = [
   {
     "id": "3-brinquedos",
     "title": "3 Brinquedos",
     "description": "3 Brinquedos — produção audiovisual AVLS.",
-    "thumbnail": "/videos/3-brinquedos-poster.jpg",
+    "thumbnail": "/videos/3-brinquedos-capa.jpg",
     "media": {
       "type": "video",
       "src": "/videos/3 Brinquedos .mp4"
@@ -14,7 +14,7 @@ export const videos = [
     "id": "luz-do-painel",
     "title": "Luz do painel",
     "description": "Luz do painel — produção audiovisual AVLS.",
-    "thumbnail": "/videos/luz-do-painel-poster.jpg",
+    "thumbnail": "/videos/luz-do-painel-capa.jpg",
     "media": {
       "type": "video",
       "src": "/videos/Luz do painel .mp4"
@@ -54,7 +54,7 @@ export const videos = [
     "id": "rr-mecanica",
     "title": "RR mecanica",
     "description": "RR mecanica — produção audiovisual AVLS.",
-    "thumbnail": "/videos/rr-mecanica-poster.jpg",
+    "thumbnail": "/videos/rr-mecanica-capa-original.png",
     "media": {
       "type": "video",
       "src": "/videos/RR mecanica .mp4"

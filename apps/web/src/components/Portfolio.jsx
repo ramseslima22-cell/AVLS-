@@ -16,12 +16,10 @@ export default function Portfolio() {
       <div className="film-container">
         <Reveal className="portfolio-heading"><p className="film-eyebrow">Portfólio / AVLS</p><h2 id="portfolio-title">Boas ideias.<br /><span className="text-gradient">Projetos reais.</span></h2></Reveal>
         <div className="portfolio-toolbar">
-          <p>Descubra os detalhes e encontre inspiração para o seu próximo projeto.</p>
           <div className="portfolio-filters" role="group" aria-label="Categorias do portfólio">
             {projectCategories.map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}
           </div>
         </div>
-        <p className="portfolio-count" aria-live="polite">{filtered.length} projetos selecionados · Clique em um projeto para ver os detalhes.</p>
         <div className="project-grid" key={category}>
           {filtered.map((project, index) => (
             <motion.article key={project.id} className="project-cell"

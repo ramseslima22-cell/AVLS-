@@ -12,7 +12,7 @@ export default function Videos() {
   const go = direction => setIndex(current => (current + direction + videos.length) % videos.length);
   return (
     <section id="videos" className="video-feature media-scene" aria-labelledby="video-title">
-      <div className="feature-image" key={video.id} aria-hidden="true"><img src={video.thumbnail} alt="" loading="lazy" decoding="async" /></div>
+      <div className={'feature-image' + (video.id === 'rr-mecanica' ? ' feature-image--portrait' : '')} key={video.id} aria-hidden="true"><img src={video.thumbnail} alt="" loading="lazy" decoding="async" /></div>
       <div className="scene-shade" aria-hidden="true" />
       <div className="scene-content scene-center">
         <Reveal><p className="film-eyebrow">Vídeos / Produção audiovisual</p><h2 id="video-title">Conteúdo em<br /><span className="text-gradient">movimento.</span></h2><p>Produção audiovisual e motion graphics que dão vida às marcas nas telas.</p></Reveal>

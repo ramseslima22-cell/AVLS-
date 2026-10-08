@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import './Header.css';
 
 const LOGO_URL =
-	'/images/logo.jpg';
+	'/images/avls-logo.svg';
 
 const NAV_LINKS = [
 	{ label: 'Início', href: '#inicio' },
@@ -42,9 +42,9 @@ export default function Header() {
 					<img
 						src={LOGO_URL}
 						alt="AVLS — Agência de Marketing Digital"
-						className="h-11 w-auto mix-blend-multiply"
-						width="160"
-						height="44"
+						className="h-11 w-auto object-contain"
+						width="410"
+						height="116"
 					/>
 				</a>
 

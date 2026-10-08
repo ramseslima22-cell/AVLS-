@@ -10,18 +10,18 @@ export default function MediaLightbox({ item, open, onOpenChange }) {
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent onOpenAutoFocus={() => { opener.current = item.trigger || document.activeElement; }}
-				onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }} className="avls-lightbox max-h-[90dvh] overflow-y-auto w-[94vw] max-w-6xl border-border bg-card p-0 overflow-x-hidden">
-				<div className="bg-black">
+				onCloseAutoFocus={event => { event.preventDefault(); opener.current?.focus(); }} className="avls-lightbox max-h-[96dvh] gap-0 overflow-y-auto w-[96vw] max-w-6xl border-border bg-card p-0 overflow-x-hidden">
+				<div className="flex items-center justify-center bg-black">
 					{item.media?.type === 'video' ? (
 						<video
 							key={item.media.src}
 							src={item.media.src}
 							poster={item.cover || item.thumbnail}
-							preload="none"
+							preload="metadata"
 							controls
 							autoPlay
 							playsInline
-							className="mx-auto max-h-[65dvh] w-auto max-w-full object-contain"
+							className="mx-auto h-[78dvh] w-full object-contain"
 						>
 							Seu navegador não suporta a reprodução de vídeo.
 						</video>
@@ -33,7 +33,7 @@ export default function MediaLightbox({ item, open, onOpenChange }) {
 						/>
 					)}
 				</div>
-				<div className="p-6">
+				<div className="px-6 py-3">
 					{item.category ? (
 						<p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
 							{item.category}

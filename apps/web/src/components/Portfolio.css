@@ -1,7 +1,7 @@
 .portfolio-editorial { padding: 100px 0 120px; background: var(--avls-screen); }
 .portfolio-heading { text-align: center; }
 .portfolio-heading h2 { font: 600 clamp(40px, 5.8vw, 82px)/1.08 Sora, sans-serif; letter-spacing: -.055em; margin-top: 24px; }
-.portfolio-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 50px; padding-top: 28px; border-top: 1px solid hsl(var(--border)); }
+.portfolio-toolbar { display: flex; align-items: center; justify-content: flex-end; gap: 24px; margin-top: 50px; margin-bottom: 28px; padding-top: 28px; border-top: 1px solid hsl(var(--border)); }
 .portfolio-toolbar > p { max-width: 390px; font-size: 13px; line-height: 1.8; color: hsl(var(--muted-foreground)); }
 .portfolio-filters { display: flex; flex-wrap: wrap; gap: 8px; }
 .portfolio-filters button { padding: 12px 20px; min-height: 44px; border: 1px solid hsl(var(--border)); border-radius: 100px; font-size: 11px; transition: background .25s, border-color .25s; }
