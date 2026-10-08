@@ -82,7 +82,7 @@ export default function Header() {
 								<Menu className="h-5 w-5" />
 							</button>
 						</SheetTrigger>
-						<SheetContent side="right" className="w-[85vw] max-w-sm bg-[#15141b] p-0">
+						<SheetContent side="right" aria-describedby={undefined} className="avls-lightbox w-[85vw] max-w-sm bg-[#15141b] p-0">
 							<SheetTitle className="sr-only">Menu de navegação</SheetTitle>
 							<div className="flex h-full flex-col px-7 pb-8 pt-20">
 								<nav className="flex flex-col gap-1" aria-label="Menu móvel">

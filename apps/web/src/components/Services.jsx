@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import useCinematic, { gsap } from '@/hooks/use-cinematic';
+import React from 'react';
 import {
 	Globe,
 	BarChart3,
@@ -53,22 +52,9 @@ const ORDERED_SERVICES = [
 	SERVICES[3], SERVICES[4], SERVICES[5],
 ];
 
-function animateServices(section, { desktop }) {
-	section.querySelectorAll('.service-scene').forEach((row) => {
-		gsap.from(row, { y: desktop ? 45 : 20, opacity: 0, duration: 0.8, ease: 'power3.out',
-			scrollTrigger: { trigger: row, start: 'top 90%', once: true },
-		});
-		gsap.fromTo(row.querySelector('.service-rule'), { scaleX: 0 }, { scaleX: 1, ease: 'none',
-			scrollTrigger: { trigger: row, start: 'top 80%', end: 'center 45%', scrub: 0.7 },
-		});
-	});
-}
-
 export default function Services() {
-	const ref = useRef(null);
-	useCinematic(ref, animateServices);
 	return (
-		<section ref={ref} id="servicos" className="cinematic-services py-20 sm:py-28">
+		<section id="servicos" className="cinematic-services py-20 sm:py-28">
 			<div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
 				<div className="grid gap-10 lg:grid-cols-[0.9fr_2fr] lg:gap-16">
 					<div className="services-heading"><SectionHeader

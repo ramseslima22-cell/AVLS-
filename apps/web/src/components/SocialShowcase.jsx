@@ -1,72 +1,21 @@
-import React, { useRef, useState } from 'react';
-import { ArrowUpRight, Play, Heart, Bookmark, MoveRight } from 'lucide-react';
-import MediaLightbox from '@/components/MediaLightbox';
-import { videos } from '@/data/videos';
-import useCinematic, { gsap } from '@/hooks/use-cinematic';
+import Reveal from '@/components/Reveal';
+import MediaBackdrop from '@/components/MediaBackdrop';
+import { ArrowUpRight } from 'lucide-react';
 
-const CARD_STYLES = [
-	{ format: 'Post / Branding', title: 'Sua marca.\nOutra dimensão.', variant: 'brand' },
-	{ format: 'Reel / Motion', title: 'Feito para\nser sentido.', variant: 'reel' },
-	{ format: 'Carrossel / Design', title: 'IDEIAS\nEM ALTA.', variant: 'type' },
-	{ format: 'Case / Campanha', title: 'Conexões\nque ficam.', variant: 'campaign' },
-];
-
-// A moldura e os textos dos cards acompanham os frames reais.
-export function SocialCard({ format, title, variant = 'brand', cover, onClick, videoTitle }) {
-	return (
-		<article className={`social-card social-card--${variant}`} >
-			<div className="social-card-top"><span>AVLS®</span><span>{format}</span><ArrowUpRight size={16} aria-hidden="true" /></div>
-			<div className="social-card-art">
-				<img src={cover} alt={videoTitle} loading="lazy" />
-				<h3>{title}</h3>
-				{variant === 'reel' && <span className="social-card-play" aria-hidden="true"><Play size={22} fill="currentColor" /></span>}
-			</div>
-			<div className="social-card-bottom"><span>{format}</span><span aria-hidden="true"><Heart size={16} /><Bookmark size={16} /></span></div>
-			<button type="button" className="social-card-open" onClick={onClick} aria-label={`Assistir ${videoTitle}`} />
-		</article>
-	);
-}
-
-function animateSocial(section, { desktop }) {
-	if (!desktop) return;
-	const track = section.querySelector('.social-track');
-	const viewport = section.querySelector('.social-viewport');
-	const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-	const timeline = gsap.timeline({
-		scrollTrigger: {
-			trigger: section, start: 'top 80px', end: () => `+=${distance() + 320}`,
-			pin: true, scrub: 0.8, invalidateOnRefresh: true,
-		},
-	});
-	timeline.to(track, { x: () => -distance(), ease: 'none' }, 0)
-		.to('.social-word-media', { xPercent: -12, ease: 'none' }, 0)
-		.fromTo('.social-scroll-progress', { scaleX: 0 }, { scaleX: 1, ease: 'none' }, 0);
-	const onKeyDown = (event) => {
-		if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-		event.preventDefault();
-		const trigger = timeline.scrollTrigger;
-		const progress = event.key === 'Home' ? 0 : event.key === 'End' ? 1
-			: gsap.utils.clamp(0, 1, trigger.progress + (event.key === 'ArrowRight' ? 0.35 : -0.35));
-		window.scrollTo({ top: trigger.start + progress * (trigger.end - trigger.start), behavior: 'instant' });
-	};
-	viewport.addEventListener('keydown', onKeyDown);
-	return () => viewport.removeEventListener('keydown', onKeyDown);
-}
+const MESSAGES = ['Sua marca. Outra dimensão.', 'Feito para ser sentido.', 'IDEIAS EM ALTA.', 'Conexões que ficam.'];
 
 export default function SocialShowcase() {
-	const ref = useRef(null);
-	const [selected, setSelected] = useState(null);
-	useCinematic(ref, animateSocial);
-	return (
-		<section ref={ref} className="social-showcase" aria-labelledby="social-title">
-			<div className="social-intro"><p className="studio-eyebrow">CONTEÚDO QUE OCUPA ESPAÇO</p><span>CRIAÇÃO / CONEXÃO / CULTURA</span></div>
-			<h2 id="social-title" className="social-title"><span>SOCIAL</span><span className="social-word-media">MEDIA<span className="social-title-star" aria-hidden="true">✳</span></span></h2>
-			<div className="social-viewport" tabIndex={0} role="region" aria-label="Trabalhos de social media; deslize ou use as setas para explorar">
-				<div className="social-track">{videos.map((video, index) => <SocialCard key={video.id} {...CARD_STYLES[index % CARD_STYLES.length]} cover={video.thumbnail} videoTitle={video.title} onClick={() => setSelected(video)} />)}</div>
-			</div>
-			<div className="social-caption"><p>Explorações visuais. Espaço para as próximas grandes histórias.</p><span>EXPLORE <MoveRight size={18} aria-hidden="true" /></span></div>
-			<div className="social-progress" aria-hidden="true"><div className="social-scroll-progress" /></div>
-			<MediaLightbox item={selected} open={Boolean(selected)} onOpenChange={open => { if (!open) setSelected(null); }} />
-		</section>
-	);
+  return (
+    <section className="social-scene media-scene" aria-labelledby="social-title">
+      <MediaBackdrop src="/videos/video-2.png" />
+      <div className="scene-shade" aria-hidden="true" />
+      <div className="scene-content scene-center">
+        <Reveal><p className="film-eyebrow">Conteúdo que ocupa espaço / Criação · Conexão · Cultura</p></Reveal>
+        <Reveal delay={.08}><h2 id="social-title">SOCIAL<br /><span className="social-outline">MEDIA</span></h2></Reveal>
+        <Reveal delay={.16}><p>Explorações visuais. Espaço para as próximas grandes histórias.</p></Reveal>
+        <Reveal delay={.22}><a className="film-link" href="#trabalhos">Explore <ArrowUpRight size={18} aria-hidden="true" /></a></Reveal>
+      </div>
+      <div className="social-statements film-container">{MESSAGES.map((message, index) => <Reveal key={message} delay={index * .04}><p>{message}</p></Reveal>)}</div>
+    </section>
+  );
 }

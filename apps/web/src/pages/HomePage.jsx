@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MotionConfig } from 'framer-motion';
-import { ScrollTrigger } from '@/hooks/use-cinematic';
 import StudioIntro from '@/components/StudioIntro';
 import SocialShowcase from '@/components/SocialShowcase';
 import '@/cinematic.css';
@@ -15,13 +14,9 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 import Seo from '@/components/Seo';
 
 export default function HomePage() {
-	useEffect(() => {
-		let mounted = true;
-		document.fonts.ready.then(() => { if (mounted) ScrollTrigger.refresh(); });
-		return () => { mounted = false; };
-	}, []);
 	return (
 		<MotionConfig reducedMotion="user">
+			<div className="avls-cinema">
 			<Helmet>
 				<title>AVLS — Agência de Marketing Digital | Estratégia que gera resultados</title>
 				<meta
@@ -45,6 +40,7 @@ export default function HomePage() {
 			</main>
 			<Footer />
 			<WhatsAppFloat />
+		</div>
 		</MotionConfig>
 	);
 }
